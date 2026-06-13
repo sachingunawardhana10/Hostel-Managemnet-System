@@ -1,5 +1,6 @@
 package com.hostel.hostel_management_system.payment.service;
 
+
 import com.hostel.hostel_management_system.payment.entity.Payment;
 import com.hostel.hostel_management_system.payment.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
@@ -53,3 +54,4 @@ public class PaymentService {
         return repository.findAll();
     }
 }
+

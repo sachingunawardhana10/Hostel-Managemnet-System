@@ -1,5 +1,6 @@
 package com.hostel.hostel_management_system.payment.entity;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -70,3 +71,4 @@ public class Payment {
         this.status = status;
     }
 }
+
