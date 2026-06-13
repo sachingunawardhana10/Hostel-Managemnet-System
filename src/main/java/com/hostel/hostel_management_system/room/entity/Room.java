@@ -1,11 +1,15 @@
+<<<<<<< HEAD
 //  Database model
 // Represent room table in the database
 
 
+=======
+>>>>>>> origin/notification-service
 package com.hostel.hostel_management_system.room.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+<<<<<<< HEAD
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +18,12 @@ import lombok.Setter;
 @Table(name = "rooms")
 @Getter
 @Setter
+=======
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "rooms")
+>>>>>>> origin/notification-service
 @NoArgsConstructor
 @AllArgsConstructor
 public class Room {
@@ -27,6 +37,7 @@ public class Room {
     private Integer occupiedBeds;
     private String status;
 
+<<<<<<< HEAD
     public String getStatus() {
         return status;
     }
@@ -41,6 +52,14 @@ public class Room {
 
     public void setOccupiedBeds(Integer occupiedBeds) {
         this.occupiedBeds = occupiedBeds;
+=======
+    public String getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
+>>>>>>> origin/notification-service
     }
 
     public Integer getCapacity() {
@@ -51,6 +70,7 @@ public class Room {
         this.capacity = capacity;
     }
 
+<<<<<<< HEAD
     public String getRoomNumber() {
         return roomNumber;
     }
@@ -68,4 +88,21 @@ public class Room {
     }
 
 
+=======
+    public Integer getOccupiedBeds() {
+        return occupiedBeds;
+    }
+
+    public void setOccupiedBeds(Integer occupiedBeds) {
+        this.occupiedBeds = occupiedBeds;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+>>>>>>> origin/notification-service
 }
