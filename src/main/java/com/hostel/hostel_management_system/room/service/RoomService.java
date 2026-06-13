@@ -1,3 +1,7 @@
+// Business logic
+//contains business logic and communicate with the repository
+
+
 package com.hostel.hostel_management_system.room.service;
 
 import com.hostel.hostel_management_system.room.entity.Room;
@@ -30,24 +34,21 @@ public class RoomService {
     }
 
     public Room updateRoom(Long id,
-                           Room room) {
+                                   Room room) {
 
         Room existing = repository.findById(id)
                 .orElseThrow(() ->
                         new RuntimeException("Room not found"));
 
         existing.setRoomNumber(room.getRoomNumber());
+        existing.setStatus(room.getStatus());
         existing.setCapacity(room.getCapacity());
         existing.setOccupiedBeds(room.getOccupiedBeds());
-        existing.setStatus(room.getStatus());
 
         return repository.save(existing);
     }
 
-    public void deleteResident(Long id) {
-        repository.deleteById(id);
-    }
-
     public void deleteRoom(Long id) {
+        repository.deleteById(id);
     }
 }

@@ -1,3 +1,6 @@
+//  REST API endpoints
+//Expose REST API endpoints
+
 package com.hostel.hostel_management_system.room.controller;
 
 import com.hostel.hostel_management_system.room.entity.Room;
@@ -13,21 +16,25 @@ public class RoomController {
     private final RoomService service;
 
     public RoomController(RoomService service) {
+
         this.service = service;
     }
 
     @GetMapping
     public List<Room> getAllRooms() {
+
         return service.getAllRooms();
     }
 
     @GetMapping("/{id}")
-    public Room getRoomById(@PathVariable Long id) {
+    public Room getRoomById(
+            @PathVariable Long id) {
         return service.getRoomById(id);
     }
 
     @PostMapping
-    public Room createRoom(@RequestBody Room room) {
+    public Room createRoom(
+            @RequestBody Room room) {
         return service.saveRoom(room);
     }
 
@@ -40,7 +47,8 @@ public class RoomController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteRoom(@PathVariable Long id) {
+    public String deleteRoom(
+            @PathVariable Long id) {
 
         service.deleteRoom(id);
 

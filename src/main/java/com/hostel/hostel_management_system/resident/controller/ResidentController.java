@@ -18,6 +18,7 @@ public class ResidentController {
 
     @GetMapping
     public List<Resident> getAllResidents() {
+
         return service.getAllResidents();
     }
 

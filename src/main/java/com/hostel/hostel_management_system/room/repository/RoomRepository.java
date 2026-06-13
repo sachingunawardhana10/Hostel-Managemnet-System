@@ -1,5 +1,10 @@
+//Database access layer
+// Provides database operations without writing SQL
+
+
 package com.hostel.hostel_management_system.room.repository;
 
+import com.hostel.hostel_management_system.resident.entity.Resident;
 import com.hostel.hostel_management_system.room.entity.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 
