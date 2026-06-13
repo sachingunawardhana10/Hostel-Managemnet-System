@@ -1,5 +1,6 @@
 package com.hostel.hostel_management_system.payment.controller;
 
+
 import com.hostel.hostel_management_system.payment.entity.Payment;
 import com.hostel.hostel_management_system.payment.service.PaymentService;
 import org.springframework.web.bind.annotation.*;
@@ -45,3 +46,6 @@ public class PaymentController {
         return "Payment Deleted Successfully";
     }
 }
+
+
+
