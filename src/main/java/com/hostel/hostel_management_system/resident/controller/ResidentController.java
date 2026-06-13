@@ -18,10 +18,6 @@ public class ResidentController {
 
     @GetMapping
     public List<Resident> getAllResidents() {
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/notification-service
         return service.getAllResidents();
     }
 
