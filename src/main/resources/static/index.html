@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hostel Management System</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+</head>
+<body>
+<aside class="sidebar">
+    <div class="brand">
+        <div class="brand-icon">H</div>
+        <div>
+            <h1>HostelMS</h1>
+            <p>Management Dashboard</p>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <button class="nav-link active" data-module="dashboard">Dashboard</button>
+        <button class="nav-link" data-module="residents">Residents</button>
+        <button class="nav-link" data-module="rooms">Rooms</button>
+        <button class="nav-link" data-module="payments">Payments</button>
+        <button class="nav-link" data-module="maintenances">Maintenance</button>
+        <button class="nav-link" data-module="notifications">Notifications</button>
+    </nav>
+
+    <div class="sidebar-card">
+        <span class="status-dot"></span>
+        <div>
+            <strong>Backend</strong>
+            <p id="apiStatus">Checking...</p>
+        </div>
+    </div>
+</aside>
+
+<main class="main">
+    <header class="topbar">
+        <div>
+            <p class="eyebrow">Hostel Management System</p>
+            <h2 id="pageTitle">Dashboard</h2>
+        </div>
+
+        <div class="topbar-actions">
+            <input id="searchInput" type="search" placeholder="Search current table..." />
+            <button class="btn btn-primary" id="openFormBtn">+ Add New</button>
+        </div>
+    </header>
+
+    <section class="stats-grid" id="statsGrid">
+        <article class="stat-card">
+            <span>Residents</span>
+            <strong id="residentCount">0</strong>
+        </article>
+        <article class="stat-card">
+            <span>Rooms</span>
+            <strong id="roomCount">0</strong>
+        </article>
+        <article class="stat-card">
+            <span>Payments</span>
+            <strong id="paymentCount">0</strong>
+        </article>
+        <article class="stat-card">
+            <span>Maintenance</span>
+            <strong id="maintenanceCount">0</strong>
+        </article>
+        <article class="stat-card">
+            <span>Notifications</span>
+            <strong id="notificationCount">0</strong>
+        </article>
+    </section>
+
+    <section class="content-card">
+        <div class="section-head">
+            <div>
+                <h3 id="tableTitle">Overview</h3>
+                <p id="tableSubtitle">Use the sidebar to manage hostel services.</p>
+            </div>
+            <button class="btn btn-light" id="refreshBtn">Refresh</button>
+        </div>
+
+        <div id="dashboardView" class="dashboard-view">
+            <div class="welcome-card">
+                <h3>Welcome back 👋</h3>
+                <p>Manage residents, rooms, payments, maintenance requests, and notifications from one clean dashboard.</p>
+                <button class="btn btn-primary" data-jump="residents">Start with Residents</button>
+            </div>
+        </div>
+
+        <div class="table-wrap hidden" id="tableWrap">
+            <table>
+                <thead id="tableHead"></thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<div class="modal hidden" id="formModal">
+    <div class="modal-card">
+        <div class="modal-head">
+            <div>
+                <h3 id="formTitle">Add Record</h3>
+                <p id="formSubtitle">Fill all required details.</p>
+            </div>
+            <button class="icon-btn" id="closeModalBtn">×</button>
+        </div>
+
+        <form id="dataForm" class="form-grid"></form>
+
+        <div class="modal-actions">
+            <button class="btn btn-light" id="cancelBtn" type="button">Cancel</button>
+            <button class="btn btn-primary" id="saveBtn" type="submit" form="dataForm">Save</button>
+        </div>
+    </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
