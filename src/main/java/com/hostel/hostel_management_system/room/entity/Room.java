@@ -1,5 +1,6 @@
 package com.hostel.hostel_management_system.room.entity;
 
+import com.hostel.hostel_management_system.room.enums.RoomStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +22,21 @@ public class Room {
     private String roomNumber;
     private Integer capacity;
     private Integer occupiedBeds;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private RoomStatus status;
+    private String floor;
+    private Double monthlyRent;
+
+    @PrePersist
+    public void onCreate() {
+        if (occupiedBeds == null) {
+            occupiedBeds = 0;
+        }
+
+        if (status == null) {
+            status = RoomStatus.AVAILABLE;
+        }
+    }
 
     public String getRoomNumber() {
         return roomNumber;
@@ -47,11 +62,27 @@ public class Room {
         this.occupiedBeds = occupiedBeds;
     }
 
-    public String getStatus() {
+    public String getFloor() {
+        return floor;
+    }
+
+    public void setFloor(String floor) {
+        this.floor = floor;
+    }
+
+    public Double getMonthlyRent() {
+        return monthlyRent;
+    }
+
+    public void setMonthlyRent(Double monthlyRent) {
+        this.monthlyRent = monthlyRent;
+    }
+
+    public RoomStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(RoomStatus status) {
         this.status = status;
     }
 }
