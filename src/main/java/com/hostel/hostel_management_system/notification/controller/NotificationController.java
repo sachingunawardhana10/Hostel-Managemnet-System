@@ -2,7 +2,7 @@ package com.hostel.hostel_management_system.notification.controller;
 
 
 import com.hostel.hostel_management_system.notification.service.NotificationService;
-import com.hostel.hostel_management_system.room.entity.Notification;
+import com.hostel.hostel_management_system.notification.entity.Notification;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

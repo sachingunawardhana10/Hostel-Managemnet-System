@@ -2,7 +2,7 @@ package com.hostel.hostel_management_system.notification.service;
 
 // Changed 'notifications' to 'notification' to match your package structure
 import com.hostel.hostel_management_system.notification.repository.NotificationRepository;
-import com.hostel.hostel_management_system.room.entity.Notification;
+import com.hostel.hostel_management_system.notification.entity.Notification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
