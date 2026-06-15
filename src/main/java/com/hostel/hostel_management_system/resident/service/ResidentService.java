@@ -1,8 +1,9 @@
 package com.hostel.hostel_management_system.resident.service;
 
+import com.hostel.hostel_management_system.resident.dto.ResidentRequest;
 import com.hostel.hostel_management_system.resident.entity.Resident;
 import com.hostel.hostel_management_system.resident.repository.ResidentRepository;
-import lombok.RequiredArgsConstructor;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,30 +23,39 @@ public class ResidentService {
 
     public Resident getResidentById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Resident not found"));
+                .orElseThrow(() -> new RuntimeException("Resident not found with id: " + id));
     }
 
-    public Resident saveResident(Resident resident) {
+    public Resident saveResident(@Valid ResidentRequest request) {
+
+        Resident resident = new Resident();
+
+        resident.setFullName(request.getFullName());
+        resident.setEmail(request.getEmail());
+        resident.setPhone(request.getPhone());
+        resident.setAddress(request.getAddress());
+
         return repository.save(resident);
     }
 
-    public Resident updateResident(Long id,
-                                   Resident resident) {
+    public Resident updateResident(Long id, Resident request) {
 
-        Resident existing = repository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Resident not found"));
+        Resident existingResident = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Resident not found with id: " + id));
 
-        existing.setFullName(resident.getFullName());
-        existing.setEmail(resident.getEmail());
-        existing.setPhone(resident.getPhone());
-        existing.setAddress(resident.getAddress());
+        existingResident.setFullName(request.getFullName());
+        existingResident.setEmail(request.getEmail());
+        existingResident.setPhone(request.getPhone());
+        existingResident.setAddress(request.getAddress());
 
-        return repository.save(existing);
+        return repository.save(existingResident);
     }
 
     public void deleteResident(Long id) {
-        repository.deleteById(id);
+
+        Resident existingResident = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Resident not found with id: " + id));
+
+        repository.delete(existingResident);
     }
 }

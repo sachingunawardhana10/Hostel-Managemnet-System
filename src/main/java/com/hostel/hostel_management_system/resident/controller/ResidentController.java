@@ -1,7 +1,9 @@
 package com.hostel.hostel_management_system.resident.controller;
 
+import com.hostel.hostel_management_system.resident.dto.ResidentRequest;
 import com.hostel.hostel_management_system.resident.entity.Resident;
 import com.hostel.hostel_management_system.resident.service.ResidentService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,9 +30,8 @@ public class ResidentController {
     }
 
     @PostMapping
-    public Resident createResident(
-            @RequestBody Resident resident) {
-        return service.saveResident(resident);
+    public Resident createResident(@Valid @RequestBody ResidentRequest request) {
+        return service.saveResident(request);
     }
 
     @PutMapping("/{id}")
