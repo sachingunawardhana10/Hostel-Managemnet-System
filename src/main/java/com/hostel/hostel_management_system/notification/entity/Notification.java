@@ -1,4 +1,4 @@
-package com.hostel.hostel_management_system.room.entity;
+package com.hostel.hostel_management_system.notification.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
