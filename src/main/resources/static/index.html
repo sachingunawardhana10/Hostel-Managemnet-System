@@ -19,8 +19,9 @@
 
     <nav class="nav">
         <button class="nav-link active" data-module="dashboard">Dashboard</button>
-        <button class="nav-link" data-module="residents">Residents</button>
-        <button class="nav-link" data-module="rooms">Rooms</button>
+        <button class="nav-link admin-warden-only" data-module="residents">Residents</button>
+        <button class="nav-link admin-warden-only" data-module="rooms">Rooms</button>
+        <button class="nav-link admin-warden-only" data-module="allocations">Allocations</button>
         <button class="nav-link" data-module="payments">Payments</button>
         <button class="nav-link" data-module="maintenances">Maintenance</button>
         <button class="nav-link" data-module="notifications">Notifications</button>
@@ -43,8 +44,16 @@
         </div>
 
         <div class="topbar-actions">
+            <div class="user-chip">
+                <span id="loggedUserName">User</span>
+                <small id="loggedUserRole">ROLE</small>
+            </div>
+
             <input id="searchInput" type="search" placeholder="Search current table..." />
+
             <button class="btn btn-primary" id="openFormBtn">+ Add New</button>
+
+            <button class="btn btn-light" id="logoutBtn">Logout</button>
         </div>
     </header>
 
@@ -56,6 +65,10 @@
         <article class="stat-card">
             <span>Rooms</span>
             <strong id="roomCount">0</strong>
+        </article>
+        <article class="stat-card">
+            <span>Allocations</span>
+            <strong id="allocationCount">0</strong>
         </article>
         <article class="stat-card">
             <span>Payments</span>
@@ -107,6 +120,8 @@
             <button class="icon-btn" id="closeModalBtn">×</button>
         </div>
 
+
+
         <form id="dataForm" class="form-grid"></form>
 
         <div class="modal-actions">
@@ -118,6 +133,6 @@
 
 <div id="toast" class="toast hidden"></div>
 
-<script src="app.js"></script>
+
 </body>
 </html>

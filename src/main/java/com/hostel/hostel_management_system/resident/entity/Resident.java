@@ -16,6 +16,7 @@ public class Resident {
 
     private String fullName;
 
+
     @Column(unique = true)
     private String email;
 
@@ -118,5 +119,13 @@ public class Resident {
 
     public void setGuardianPhone(String guardianPhone) {
         this.guardianPhone = guardianPhone;
+    }
+
+    public ResidentStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ResidentStatus status) {
+        this.status = status;
     }
 }

@@ -33,6 +33,15 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
 
+                        .requestMatchers(
+                                "/",
+                                "/index.html",
+                                "/login.html",
+                                "/app.js",
+                                "/style.css",
+                                "/favicon.ico"
+                        ).permitAll()
+
                         .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()
 
                         .requestMatchers("/api/dashboard/**").hasAnyRole("ADMIN", "WARDEN")

@@ -2,6 +2,7 @@ package com.hostel.hostel_management_system.resident.service;
 
 import com.hostel.hostel_management_system.resident.dto.ResidentRequest;
 import com.hostel.hostel_management_system.resident.entity.Resident;
+import com.hostel.hostel_management_system.resident.enums.ResidentStatus;
 import com.hostel.hostel_management_system.resident.repository.ResidentRepository;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
@@ -52,10 +53,11 @@ public class ResidentService {
     }
 
     public void deleteResident(Long id) {
+        Resident resident = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Resident not found"));
 
-        Resident existingResident = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Resident not found with id: " + id));
+        resident.setStatus(ResidentStatus.LEFT);
 
-        repository.delete(existingResident);
+        repository.save(resident);
     }
 }

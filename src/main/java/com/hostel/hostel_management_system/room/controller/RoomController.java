@@ -2,6 +2,7 @@ package com.hostel.hostel_management_system.room.controller;
 
 import com.hostel.hostel_management_system.room.entity.Room;
 import com.hostel.hostel_management_system.room.service.RoomService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,13 +36,12 @@ public class RoomController {
     public Room updateRoom(
             @PathVariable Long id,
             @RequestBody Room room) {
-
         return service.updateRoom(id, room);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteRoom(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteRoom(@PathVariable Long id) {
         service.deleteRoom(id);
-        return "Room Deleted Successfully";
+        return ResponseEntity.noContent().build();
     }
 }

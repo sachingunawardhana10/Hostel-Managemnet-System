@@ -1,16 +1,12 @@
 package com.hostel.hostel_management_system.notification.entity;
 
+import com.hostel.hostel_management_system.notification.enums.NotificationType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-
 @Entity
 @Table(name = "notifications")
-@NoArgsConstructor
-@AllArgsConstructor
 public class Notification {
 
     @Id
@@ -18,10 +14,24 @@ public class Notification {
     private Long id;
 
     private String title;
+
+    @Column(length = 1000)
     private String message;
+
     private String recipientId;
-    private String type;
+
+    @Enumerated(EnumType.STRING)
+    private NotificationType type;
+
     private LocalDate sentAt;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -47,11 +57,11 @@ public class Notification {
         this.recipientId = recipientId;
     }
 
-    public String getType() {
+    public NotificationType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(NotificationType type) {
         this.type = type;
     }
 

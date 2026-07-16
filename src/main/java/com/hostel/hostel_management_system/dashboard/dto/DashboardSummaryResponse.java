@@ -7,18 +7,25 @@ public class DashboardSummaryResponse {
     private long totalPayments;
     private long totalMaintenanceRequests;
     private long totalNotifications;
+    private long totalAllocations;
 
     public DashboardSummaryResponse(
             long totalResidents,
             long totalRooms,
+            long totalAllocations,
             long totalPayments,
             long totalMaintenanceRequests,
             long totalNotifications) {
         this.totalResidents = totalResidents;
         this.totalRooms = totalRooms;
+        this.totalAllocations = totalAllocations;
         this.totalPayments = totalPayments;
         this.totalMaintenanceRequests = totalMaintenanceRequests;
         this.totalNotifications = totalNotifications;
+    }
+
+    public long getTotalAllocations() {
+        return totalAllocations;
     }
 
     public long getTotalResidents() {

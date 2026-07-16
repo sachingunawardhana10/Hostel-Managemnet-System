@@ -6,6 +6,7 @@ import com.hostel.hostel_management_system.resident.service.ResidentService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @RestController
