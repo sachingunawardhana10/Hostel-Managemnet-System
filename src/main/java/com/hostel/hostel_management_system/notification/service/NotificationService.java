@@ -2,6 +2,7 @@ package com.hostel.hostel_management_system.notification.service;
 
 import com.hostel.hostel_management_system.notification.entity.Notification;
 import com.hostel.hostel_management_system.notification.repository.NotificationRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;

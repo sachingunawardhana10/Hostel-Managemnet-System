@@ -10,15 +10,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Maintenance {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-        private String residentId;
-        private String issueType;
-        private String description;
-        private String priority;
-        private String status;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    private String residentId;
+    private String issueType;
+    private String description;
+    private String priority;
+    private String status;
 
     public String getResidentId() {
         return residentId;
