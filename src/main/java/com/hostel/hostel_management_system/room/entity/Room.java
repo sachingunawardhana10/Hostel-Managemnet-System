@@ -1,17 +1,10 @@
 package com.hostel.hostel_management_system.room.entity;
 
+import com.hostel.hostel_management_system.room.enums.RoomStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "rooms")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Room {
 
     @Id
@@ -19,9 +12,39 @@ public class Room {
     private Long id;
 
     private String roomNumber;
+
     private Integer capacity;
+
     private Integer occupiedBeds;
-    private String status;
+
+    @Enumerated(EnumType.STRING)
+    private RoomStatus status;
+
+    @PrePersist
+    public void onCreate() {
+        if (occupiedBeds == null) {
+            occupiedBeds = 0;
+        }
+
+        if (status == null) {
+            status = RoomStatus.AVAILABLE;
+        }
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        if (occupiedBeds == null) {
+            occupiedBeds = 0;
+        }
+
+        if (status == null) {
+            status = RoomStatus.AVAILABLE;
+        }
+    }
+
+    public Long getId() {
+        return id;
+    }
 
     public String getRoomNumber() {
         return roomNumber;
@@ -47,11 +70,11 @@ public class Room {
         this.occupiedBeds = occupiedBeds;
     }
 
-    public String getStatus() {
+    public RoomStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(RoomStatus status) {
         this.status = status;
     }
 }

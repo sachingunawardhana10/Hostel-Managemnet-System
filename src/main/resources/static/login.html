@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Hostel Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="login-page">
+
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="brand login-brand">
+      <div class="brand-icon">H</div>
+      <div>
+        <h1>HostelMS</h1>
+        <p>Enterprise Login</p>
+      </div>
+    </div>
+
+    <h2>Sign in</h2>
+    <p class="login-subtitle">Use your admin, warden, or resident account.</p>
+
+    <form id="loginForm" class="login-form">
+      <div class="form-group full">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required placeholder="admin@gmail.com" />
+      </div>
+
+      <div class="form-group full">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required placeholder="admin123" />
+      </div>
+
+      <button class="btn btn-primary login-btn" type="submit">Login</button>
+    </form>
+
+    <p id="loginMessage" class="login-message"></p>
+  </div>
+</div>
+
+<script>
+  const API_BASE = "";
+
+  const loginForm = document.getElementById("loginForm");
+  const loginMessage = document.getElementById("loginMessage");
+
+  loginForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const payload = {
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value
+      };
+
+      try {
+          const response = await fetch(API_BASE + "/api/auth/login", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify(payload)
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+              loginMessage.textContent = data.message || "Login failed";
+              loginMessage.className = "login-message error";
+              return;
+          }
+
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("userId", data.userId);
+          localStorage.setItem("fullName", data.fullName);
+          localStorage.setItem("email", data.email);
+          localStorage.setItem("role", data.role);
+          localStorage.setItem("residentId", data.residentId || "");
+
+          window.location.href = "index.html";
+
+      } catch (error) {
+          loginMessage.textContent = "Backend not connected or login failed.";
+          loginMessage.className = "login-message error";
+      }
+  });
+</script>
+
+</body>
+</html>

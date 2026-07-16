@@ -21,8 +21,7 @@ public class RoomService {
 
     public Room getRoomById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Room not found"));
+                .orElseThrow(() -> new RuntimeException("Room not found"));
     }
 
     public Room saveRoom(Room room) {
@@ -30,10 +29,8 @@ public class RoomService {
     }
 
     public Room updateRoom(Long id, Room room) {
-
         Room existing = repository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Room not found"));
+                .orElseThrow(() -> new RuntimeException("Room not found"));
 
         existing.setRoomNumber(room.getRoomNumber());
         existing.setCapacity(room.getCapacity());

@@ -1,8 +1,8 @@
 package com.hostel.hostel_management_system.notification.service;
 
-// Changed 'notifications' to 'notification' to match your package structure
-import com.hostel.hostel_management_system.notification.repository.NotificationRepository;
 import com.hostel.hostel_management_system.notification.entity.Notification;
+import com.hostel.hostel_management_system.notification.repository.NotificationRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +22,7 @@ public class NotificationService {
 
     public Notification getNotificationById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Notification not found"));
+                .orElseThrow(() -> new RuntimeException("Notification not found"));
     }
 
     public Notification saveNotification(Notification notification) {
@@ -31,10 +30,8 @@ public class NotificationService {
     }
 
     public Notification updateNotification(Long id, Notification notification) {
-
         Notification existing = repository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Notification not found"));
+                .orElseThrow(() -> new RuntimeException("Notification not found"));
 
         existing.setTitle(notification.getTitle());
         existing.setMessage(notification.getMessage());

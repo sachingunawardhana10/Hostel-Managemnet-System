@@ -1,8 +1,8 @@
 package com.hostel.hostel_management_system.notification.controller;
 
-
-import com.hostel.hostel_management_system.notification.service.NotificationService;
 import com.hostel.hostel_management_system.notification.entity.Notification;
+import com.hostel.hostel_management_system.notification.service.NotificationService;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,9 +28,7 @@ public class NotificationController {
     }
 
     @PostMapping
-    public Notification createNotification(
-            @RequestBody Notification notification) {
-
+    public Notification createNotification(@RequestBody Notification notification) {
         return service.saveNotification(notification);
     }
 
@@ -38,15 +36,12 @@ public class NotificationController {
     public Notification updateNotification(
             @PathVariable Long id,
             @RequestBody Notification notification) {
-
         return service.updateNotification(id, notification);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteNotification(@PathVariable Long id) {
-
+    public ResponseEntity<Void> deleteNotification(@PathVariable Long id) {
         service.deleteNotification(id);
-
-        return "Notification Deleted Successfully";
+        return ResponseEntity.noContent().build();
     }
 }
